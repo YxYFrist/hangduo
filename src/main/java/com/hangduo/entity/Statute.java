@@ -1,24 +1,24 @@
 package com.hangduo.entity;
 
-public class Statute {
 
-    private Integer statuteId;
+public class Statute {
+//111
+    private Integer statute_id;
     private  Integer statutePartId;
     private  String statuteAs;
     private  String statuteAersion;
-    private  String statueName;
+    private  String statuteName;
     private Integer display;
     private  String statutePDFname;
     private String statutePDFdownload;
     private  String statuteVersionExplain;
 
-
     public Integer getStatuteId() {
-        return statuteId;
+        return statute_id;
     }
 
     public void setStatuteId(Integer statuteId) {
-        this.statuteId = statuteId;
+        this.statute_id = statuteId;
     }
 
     public Integer getStatutePartId() {
@@ -45,12 +45,12 @@ public class Statute {
         this.statuteAersion = statuteAersion;
     }
 
-    public String getStatueName() {
-        return statueName;
+    public String getStatuteName() {
+        return statuteName;
     }
 
-    public void setStatueName(String statueName) {
-        this.statueName = statueName;
+    public void setStatuteName(String statuteName) {
+        this.statuteName = statuteName;
     }
 
     public Integer getDisplay() {
