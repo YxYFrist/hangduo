@@ -7,7 +7,6 @@ public class User {
 
     private Integer user_id;
     private String user_phone;
-    private Integer user_member;
     private Integer user_level;
     private Date user_registrationdate;
 
@@ -25,14 +24,6 @@ public class User {
 
     public void setUser_phone(String user_phone) {
         this.user_phone = user_phone;
-    }
-
-    public Integer getUser_member() {
-        return user_member;
-    }
-
-    public void setUser_member(Integer user_member) {
-        this.user_member = user_member;
     }
 
     public Integer getUser_level() {
