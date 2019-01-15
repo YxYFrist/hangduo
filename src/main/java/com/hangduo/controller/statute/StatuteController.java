@@ -18,8 +18,11 @@ public class StatuteController {
    @Resource
     private StatuteService statuteService;
 
+   @RequestMapping("toaddstutle")
+   public String toadd(){
+       return "addStatute";
+   }
    @RequestMapping("show")
-
    public String listTweets(Map<String,Object> map,@RequestParam(value="currpageNo",required=false)Integer currgeN0,@RequestParam(value="statute_id",required = false) Integer statute_id,@RequestParam(value = "statuteName",required = false) String statuteName){
 
 
