@@ -22,7 +22,7 @@ public class LawController {
     public String showLaws(@RequestParam(value="lawsText",required=false)String lawsText, Map<String,Object> map)
     {
         List<Laws> list=lawService.getLawsLike(lawsText);
-
+//
         map.put("list",list);
 
         return  "index";
