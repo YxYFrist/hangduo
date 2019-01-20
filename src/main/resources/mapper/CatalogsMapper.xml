@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hangduo.dao.statute.CatalogsMapeer">
+
+    <select id="getCatalogs" resultMap="demo">
+   SELECT 	c.*,i.i_alias,i.i_title FROM hangduoTest.catalogs c INNER JOIN items i ON c.cid=i.cid
+
+    </select>
+
+
+	<select id="mulu" resultMap="demo">
+
+		SELECT c_level ,c_index,c_content,sup_cid FROM hangduoTest.catalogs
+
+	</select>
+	<select id="showItems" resultMap="mopp">
+		SELECT 	iid, cid, law_alias, i_num, i_alias, i_title, i_content FROM hangduoTest.items
+		<where>
+			<if test="itemsText !=null and itemsText !=''">
+				iid LIKE CONCAT('%',#{itemsText},'%') OR
+				cid LIKE CONCAT('%',#{itemsText},'%')
+				OR i_title LIKE CONCAT('%',#{itemsText},'%')
+			</if>
+		</where>
+	</select>
+
+
+	<resultMap id="mopp" type="com.hangduo.entity.Items">
+		<id column="iid" property="iid"  />
+		<result column="cid" property="cid"  />
+		<result column="law_alias" property="lawAlias"  />
+		<result column="i_num" property="iNum"  />
+		<result column="i_alias" property="iAlias"  />
+		<result column="i_title" property="iTitle"  />
+		<result column="i_content" property="Icontent"  />
+	</resultMap>
+
+
+
+
+
+	<resultMap id="demo" type="com.hangduo.entity.Catalogs">
+		<id column="cid" property="cid"  />
+		<result column="law_alias" property="lawAlias"  />
+		<result column="c_content" property="cContent"  />
+		<result column="c_level" property="cLevel"  />
+		<result column="sup_cid" property="supCid"  />
+		<result column="c_index" property="Cindex"  />
+		<result column="i_alias" property="iAlias"  />
+		<result column="i_title" property="iTltie"  />
+
+	</resultMap>
+
+
+
+
+</mapper>

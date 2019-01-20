@@ -11,6 +11,24 @@ public class Clause {
     private  String cluseTitle;
     private String clauseContent;
     private String clauseKeyword;
+    private String statuteName;
+    private String statuteAs;
+
+    public String getStatuteName() {
+        return statuteName;
+    }
+
+    public void setStatuteName(String statuteName) {
+        this.statuteName = statuteName;
+    }
+
+    public String getStatuteAs() {
+        return statuteAs;
+    }
+
+    public void setStatuteAs(String statuteAs) {
+        this.statuteAs = statuteAs;
+    }
 
     public Integer getClauseId() {
         return clauseId;

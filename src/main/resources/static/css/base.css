@@ -1,0 +1,176 @@
+@charset "utf-8";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+	margin: 0;
+	padding: 0
+}
+
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+	border: 0
+}
+
+li {
+	list-style: none
+}
+
+textarea {
+	overflow: auto;
+	resize: none
+}
+
+a,
+button {
+	cursor: pointer
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+b {
+	font-weight: 700
+}
+
+a,
+a:hover {
+	text-decoration: none
+}
+
+body,
+html {
+	width: 100%;
+	font-weight: 400;
+	-webkit-box-align: center;
+	-webkit-box-orient: horizontal
+}
+
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-family: "Microsoft YaHei", "Helvetica Neue", Arial, HelveticaNeue, Helvetica, "BBAlpha Sans", sans-serif
+}
+
+body {
+	background: #fff;
+	opacity: 1;
+	-webkit-transition: opacity 500ms ease-in;
+	transition: opacity 500ms ease-in
+}
+
+a {
+	text-decoration: none
+}
+
+input {
+	-webkit-appearance: none
+}
+
+* {
+	outline: 0;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-focus-ring-color: rgba(0, 0, 0, 0)
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+	border: 0
+}
+
+li {
+	list-style: none
+}
+
+a,
+button {
+	cursor: pointer
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+b {
+	font-weight: 700
+}
+
+a,
+a:hover {
+	text-decoration: none
+}
+
+html,
+body {
+	width: 100%;
+	font-family: 'Microsoft Yahei'
+}
+
+body {
+	font-family: "Microsoft YaHei", simSun, "Lucida Grande", "Lucida Sans Unicode", Arial;
+	font-size: 12px
+}
+body{background-color: rgb(242,242,242);}
+.border-margin{width: 100%;height: 100%;}
+.margin{width: 100%;height: 120px;position: relative;}
+.margin-one{position: absolute;left:30px;font-size: 80px;}
+.margin-two{position: relative;top: 30px;font-size: 40px;}
+.margin-three{position: absolute;right:30px;font-size: 80px;}
+
+
+.bottom-border{width:100%;height: 100px;background-color: white;position: absolute;bottom: 0px;left: 0px;}
+.bottom-border>a:nth-child(1){display: inline-block;margin-right: 250px;}
+.bottom-border>a:nth-child(2){display: inline-block;}
+.bottom-border>a:nth-child(3){display: inline-block;margin-left: 250px;}
+.bottom-border>a>img{width: 50px;height:50px;}
+.bottom-border>a>span{font-size: 30px;color: rgb(40,40,40);display: block;margin-top: 5px;}

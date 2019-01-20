@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hangduo.dao.statute.ClauseMappr">
+
+    <select id="getClause" resultMap="clause">
+
+        SELECT c.*,s.statuteAs,s.statuteName  FROM
+	aircraft.clause c INNER JOIN
+	aircraft.statute s  ON c.statute_id=s.statute_id <where>
+        <if test="statuteName!=null and statuteName !=''">
+            s.statuteName LIKE CONCAT('%',#{statuteName},'%')
+        </if>
+        <if test="statuteAs!=null and statuteAs !=''">
+            s.statuteAs LIKE CONCAT('%',#{statuteAs},'%')
+        </if>
+    </where>
+
+    </select>
+
+    <resultMap id="clause" type="com.hangduo.entity.Clause">
+
+        <id column="clause_id" property="clauseId"  />
+        <result column="statute_id" property="statueId"  />
+        <result column="regulatory_directory_id" property="regulatoryDirectoryId"  />
+        <result column="clause_alias" property="clauseAlias"  />
+        <result column="clause_version_name" property="clauseVersionName"  />
+        <result column="clause_title" property="cluseTitle"  />
+        <result column="clause_content" property="clauseContent"  />
+        <result column="clause_keyword" property="clauseKeyword"  />
+        <result column="statuteName" property="statuteName"  />
+        <result column="statuteAs" property="statuteAs"  />
+
+
+    </resultMap>
+
+
+</mapper>

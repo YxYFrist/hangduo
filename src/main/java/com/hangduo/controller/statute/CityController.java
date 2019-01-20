@@ -13,16 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-
-
-
 @Controller
 public class CityController {
-
 	@Resource
 	private CityService cityService;
-
+	@RequestMapping("demo")
+	public String show()
+	{
+		return "addStatute";
+	}
 	@RequestMapping(value="sheng")
 	@ResponseBody
 	public Map<String,Object> sheng(){
@@ -31,7 +30,6 @@ public class CityController {
 		map.put("list", shenglist);
 		return map;
 	}
-
 	@RequestMapping(value="shi")
 	@ResponseBody
 	public Map<String,Object> shi(@RequestParam("key")String key){

@@ -1,89 +1,220 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome!</title>
-    <script src="../static/jquery-1.9.1.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
 </head>
-<body>
-
-<form action="show" method="post">
-    <input type="text" name="statute_id">
-    <input type="text" name="statuteName" >
-
-    <input type="submit" value="查询"/>
-
-</form>
-
-<table id="demo" width="100%" align="center">
-    <tr>
-        <th>帖子id</th>
-        <th>用户名</th>
-        <th>标题</th>
-        <th>发布时间</th>
-        <th>获赞数</th>
-        <th>帖子内容</th>
-        <th width="80px">上传图片</th>
-        <th>帖子状态</th>
-        <th>操作</th>
-    </tr>
-     <#list statueList as list>
-        <tr>
-
-            <td>${list.statuteId}</td>
-            <td>${list.statutePartId}</td>
-            <td>${list.statuteAs}</td>
-            <td>${list.statuteAersion}</td>
-            <td>${list.statuteName}</td>
-            <td>${list.display}</td>
-            <td>${list.statutePDFdownload}</td>
-            <td>${list.statuteVersionExplain}</td>
-            <td><a href="javascript:void(0)" onclick="del(${list.statuteId},this)">删除</a></td>
-            <td><a href="showId?statute_id=${list.statuteId}">编辑</a></td>
-        </tr>
-     </#list>
-
-</table>
-<div align="center" style="background-color: white; padding-bottom: 30px">
-    <a href="show?currpageNo=1">首页</a>
-    <a href="show?currpageNo=${page.currPageNo-1}">上一页</a>
-    <a href="show?currpageNo=${page.currPageNo+1}">下一页</a>
-    <a href="show?currpageNo=${page.totalPageCount}">尾页</a>
-    <a>当前页码 ：${currpageNo}</a>
-    <a>总页码 ：${page.totalPageCount}</a>
-</div>
-
-<form action="addStatute" method="post">
-
-    <input type="text" name="statutePartId" >
-    <input type="text" name="statuteAs" >
-    <input type="text" name="statuteAersion" >
-    <input type="text" name="statuteName" >
-    <input type="text" name="display" >
-    <input type="text" name="statutePDFname" >
-    <input type="text" name="statutePDFdownload" >
-    <input type="text" name="statuteVersionExplain">
-
-    <input type="submit" value="新增"/>
-
-</form>
-
-<script type="text/javascript">
-
-    function del(statute_id,dom){
-        $.post("delStatute","statute_id="+statute_id,function(data){
-            if(data.result=="true"){
-                $(dom).parent().parent().remove();
-                window.location.href="/show";
-                alert("删除成功!");
-            }else{
-                alert("删除失败!");
-            }
-        },"json");
+<style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(253,253,253);
     }
-</script>
+    .top-border{
+        width: 100%;
+        height: 150px;
+        background-color: rgb(240,240,240);
+    }
+    .top{
+        width: 90%;
+        height: 110px;
+        border-radius: 20px;
+        background-color: white;
+        position: relative;
+        top:10px;
+    }
+    .top-img{
+        position: absolute;
+        top: 30px;
+        left: 60px;
+    }
+    .top-input{
+        border: 0px;
+        width: 80%;
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        left: 140px;
+        font-family: "微软雅黑";
+        font-size: 50px;
+        color: rgb(40,40,40);
+        outline: invert;
+    }
+    .center-a{
+        width: 100%;
+        height: 1300px;
+        background-color: white;
+    }
+    .center-border{
+        width: 150px;
+        height: 200px;
+        margin: 30px 10px;
+        display: inline-block;
+    }
+    .center-b{
+        width: 130px;
+        height: 120px;
+        background-color: rgb(229,241,251);
+        border-radius: 30px;
+        font-family: "微软雅黑";
+        font-size: 80px;
+        padding-top: 10px;
+        color: rgb(38,106,179);
+        margin: 0px;
+    }
+    .center-c{
+        margin-top: 10px;
+        font-family: "微软雅黑";
+        font-size: 30px;
+    }
+    .bottom{
+        width: 100%;
+        height: 300px;
+    }
+    .bottom>ul{
+        width: 100%;
+        height: 300px;
+    }
+    .bottom>ul>li{
+        width: 100%;
+        height: 100px;
+        border-bottom: 1px solid rgb(200,200,200);
+        list-style: none;
+        position: relative;
+    }
+    .bottom-one{
+        font-family: "微软雅黑";
+        font-size: 35px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    .bottom-two{
+        font-family: "微软雅黑";
+        font-size: 35px;
+        color: rgb(80,80,80);
+        position: absolute;
+        top: 20px;
+        left: 220px;
+    }
+    .bottom-three{
+        font-family: "微软雅黑";
+        font-size: 35px;
+        color: blue;
+        position: absolute;
+        top: 20px;
+        right: 80px;
+    }
+</style>
+<body>
+<div class="body" align="center">
 
 
+    <div class="top-border">
+        <div class="top">
+            <form action="/items" method="post">
+            <img class="top-img" src="static/img/city.png"/>
+            <input type="text" class="top-input" placeholder="请输入搜索内容" name=""/>
+            </form>
+        </div>
+    </div>
 
+    <div class="center-a">
 
+        <div class="center-border">
+            <p class="center-b" align="center">21</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
+        <div class="center-border">
+            <p class="center-b" align="center">10</p>
+            <p class="center-c">民用航空和零售部门</p>
+        </div>
 
+    </div>
+
+    <div class="bottom">
+        <ul>
+            <li>
+                <span class="bottom-one">收藏</span>
+                <span class="bottom-three">更多</span>
+            </li>
+            <li>
+                <span class="bottom-one">第25.3条</span>
+                <span class="bottom-two">更多达瓦打完哇大大我v</span>
+                <img class="bottom-three" src="static/img/jiantou.png" />
+            </li>
+            <li>
+                <span class="bottom-one">第25.4条</span>
+                <span class="bottom-two">更大哇哇大瓦房瓦房</span>
+                <img class="bottom-three" src="static/img/jiantou.png" />
+            </li>
+        </ul>
+    </div>
+
+</div>
 </body>
 </html>

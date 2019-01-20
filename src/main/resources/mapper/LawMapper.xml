@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hangduo.dao.statute.LawMapper">
+
+    <select id="showItems" resultMap="mopp">
+        SELECT 	law_alias,law_num, law_version, law_title,law_logo_url,law_pdf_title,law_dl_link,law_description,show_status FROM  hangduoTest.laws
+        <where>
+            <if test="itemsText !=null and itemsText !=''">
+                law_title LIKE CONCAT('%',#{lawsText},'%') OR
+                law_alias LIKE CONCAT('%',#{lawsText},'%')
+                OR law_version LIKE CONCAT('%',#{lawsText},'%')
+            </if>
+        </where>
+    </select>
+
+
+
+
+
+</mapper>

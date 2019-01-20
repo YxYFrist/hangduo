@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 @Controller
 public class StatuteController {
-   @Resource
+ /*  @Resource
     private StatuteService statuteService;
 
    @RequestMapping("toaddstutle")
@@ -129,7 +129,7 @@ public class StatuteController {
          map.put("list",list);
 
       return  "redirect:show";
-  }
+  }*/
 
 
 
